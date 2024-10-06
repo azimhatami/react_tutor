@@ -30,7 +30,7 @@ function CourseCardFooter({ tags, start, status }) {
 	return (
 		<div className='course-footer'>
 			<div className='tags'>
-				{tags.map((tag, index) => {
+				{tags.map((tag) => {
 					return <span key={tag} className='badge badge-secondary'>{tag}</span>
 				})}
 			</div>
@@ -42,7 +42,7 @@ function CourseCardFooter({ tags, start, status }) {
 				day: 'numeric'
 				})}
 				</div>
-				<span className='badge badge-danger'>{status}</span>
+				<span className={`badge ${status === 'Active' ? 'badge-primary' : status === 'Upcoming' ? 'badge-danger' : 'badge-secondery'}`}>{status}</span>
 			</div>
 		</div>
 	);
