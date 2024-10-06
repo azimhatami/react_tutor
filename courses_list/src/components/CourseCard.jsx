@@ -27,6 +27,12 @@ function CourseCardHeader({ title, description, rate}) {
 
 
 function CourseCardFooter({ tags, start, status }) {
+	const startedAt = new Date(start).toLocaleDateString('en', {
+		month: 'short',
+		year: 'numeric',
+		day: 'numeric'
+	});
+
 	return (
 		<div className='course-footer'>
 			<div className='tags'>
@@ -36,11 +42,7 @@ function CourseCardFooter({ tags, start, status }) {
 			</div>
 			<div className='caption'>
 				<div className='date'>
-				{new Date(start).toLocaleDateString('en', {
-				month: 'short',
-				year: 'numeric',
-				day: 'numeric'
-				})}
+					{startedAt}
 				</div>
 				<span className={`badge ${status === 'Active' ? 'badge-primary' : status === 'Upcoming' ? 'badge-danger' : 'badge-secondery'}`}>{status}</span>
 			</div>
