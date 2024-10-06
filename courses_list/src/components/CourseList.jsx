@@ -5,7 +5,7 @@ const courses = [
 		id: 1,
 		title: 'English Lecture',
 		description: 'Language lessons with the most popular teachers',
-		imageUrl: '/img1.jpg',
+		imageUrl: '/images/img1.jpg',
 		rate: '4.5',
 		tags: ['languages'],
 		start: '2023-07-01T20:46:30.615Z',
