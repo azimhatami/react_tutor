@@ -1,4 +1,4 @@
-function CourseCard() {
+function CourseCard(props) {
 	return (
 		<div className='course-item'>
 			<div className='course-img'>
@@ -7,25 +7,26 @@ function CourseCard() {
 			<div className='course-details'>
 				<div className='course-header'>
 					<div>
-						<p className='course-title'>React</p>
-						<p className='course-description'>The Ultimate React and redux course</p>
+						<p className='course-title'>{props.course.title}</p>
+						<p className='course-description'>{props.course.description}</p>
 					</div>
-					<span className='rate'>4.5</span>
+					<span className='rate'>{props.course.rate}</span>
 				</div>
 				<div className='course-footer'>
 					<div className='tags'>
-						<span className='badge badge-secondary'>React</span>
-						<span className='badge badge-secondary'>React</span>
+						{props.course.tags.map((tag, index) => {
+							return <span key={index} className='badge badge-secondary'>{tag}</span>
+						})}
 					</div>
 					<div className='caption'>
 						<div className='date'>
-						{new Date().toLocaleDateString('en', {
+						{new Date(props.course.start).toLocaleDateString('en', {
 						month: 'short',
 						year: 'numeric',
 						day: 'numeric'
 						})}
 						</div>
-						<span className='badge badge-danger'>Upcoming</span>
+						<span className='badge badge-danger'>{props.course.status}</span>
 					</div>
 				</div>
 				<div>

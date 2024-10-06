@@ -41,7 +41,7 @@ function CourseList() {
 		<div className='courses-list'>
 			{courses.map((course) => {
 					return (
-						<CourseCard key={course.id}/>
+						<CourseCard key={course.id} course={course} />
 					);
 				})}
 		</div>
