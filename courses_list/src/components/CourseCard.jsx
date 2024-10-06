@@ -20,7 +20,7 @@ function CourseCardHeader({ title, description, rate}) {
 				<p className='course-title'>{title}</p>
 				<p className='course-description'>{description}</p>
 			</div>
-			<span className='rate'>{rate}</span>
+			<span className='rate'>⭐️ {rate}</span>
 		</div>
 	);
 }
