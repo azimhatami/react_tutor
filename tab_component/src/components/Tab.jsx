@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './Tab.module.css';
 
 const tabData = [
@@ -20,7 +21,11 @@ const tabData = [
 
 function Tab () {
 
-  const activeTab = 1;
+  const [activeTab, setActiveTab] = useState(1);
+
+  const handleActiveTab = (id) => {
+    setActiveTab(id)
+  }
 
   return (
     <>
@@ -29,7 +34,11 @@ function Tab () {
         <div className={styles.tab_header}>
           {tabData.map((tab) => {
             return (
-              <button key={tab.id} className={activeTab === tab.id ? `${styles.active}` : ''}>
+              <button 
+              key={tab.id} 
+              className={activeTab === tab.id ? `${styles.active}` : ''}
+              onClick={() => handleActiveTab(tab.id)}
+              >
                 <span>{tab.title}</span>
                 <span className={styles.tab_indicator}></span>
               </button>
