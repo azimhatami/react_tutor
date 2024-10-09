@@ -1,0 +1,16 @@
+:root {
+  font-family: 'IBM Plex Mono', sans-serif;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 1rem;
+}
+
+p {
+  font-weight: 700;
+  color: #334155;
+}

@@ -1,11 +1,12 @@
+import Tab from './components/Tab';
 import './App.css'
 
+
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-	  <h1>Tab Component</h1>
+      <Tab />
     </>
   )
 }
