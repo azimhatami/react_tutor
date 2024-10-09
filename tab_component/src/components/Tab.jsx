@@ -23,9 +23,11 @@ function Tab () {
 
   const [activeTab, setActiveTab] = useState(1);
   const [showBtn, setShowBtn] = useState(true);
+  const [count, setCount] = useState(0);
 
   const handleActiveTab = (id) => {
     setActiveTab(id)
+    setCount(count + 1);
   }
 
   const handleShowBtn = () => {
@@ -35,6 +37,7 @@ function Tab () {
   return (
     <>
       <div className={styles.header}>
+        <div className={styles.counter}>counter : {count}</div>
         <h1>Tab Component</h1>
         <button 
         className={styles.btn_show}
