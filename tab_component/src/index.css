@@ -4,11 +4,15 @@
 
 button {
   cursor: pointer;
+}
+
+#btn_tab {
   outline: none;
   border: none;
   background: none;
   font-size: 1rem;
 }
+
 
 p {
   font-weight: 700;

@@ -22,19 +22,32 @@ const tabData = [
 function Tab () {
 
   const [activeTab, setActiveTab] = useState(1);
+  const [showBtn, setShowBtn] = useState(true);
 
   const handleActiveTab = (id) => {
     setActiveTab(id)
   }
 
+  const handleShowBtn = () => {
+    setShowBtn(!showBtn)
+  }
+
   return (
     <>
-      <h1>Tab Component</h1>
+      <div className={styles.header}>
+        <h1>Tab Component</h1>
+        <button 
+        className={styles.btn_show}
+        onClick={handleShowBtn}
+        >{showBtn ? 'HIDE' : 'SHOW'}</button>
+      </div>
+    { showBtn ? 
       <div className={styles.container}>
         <div className={styles.tab_header}>
           {tabData.map((tab) => {
             return (
-              <button 
+              <button
+              id='btn_tab'
               key={tab.id} 
               className={activeTab === tab.id ? `${styles.active}` : ''}
               onClick={() => handleActiveTab(tab.id)}
@@ -49,6 +62,7 @@ function Tab () {
           <p>{tabData[activeTab - 1].content}</p>
         </div>
       </div>
+      : <p>Hide content :)</p>}
     </>
   );
 }

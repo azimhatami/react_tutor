@@ -1,9 +1,26 @@
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 h1 {
   color: #8ea8bb;
   font-weight: 900;
   font-size: 2.5rem;
   margin-bottom: 4rem;
+}
+
+
+.btn_show {
+  border: none;
+  width: 8rem;
+  height: 3rem;
+  border-radius: 0.7rem;
+  background-color: #0EACF9;
+  font-size: 1.5rem;
+  font-weight: 900;
 }
 
 .container {
@@ -20,10 +37,17 @@ h1 {
   padding-bottom: 1rem;
 }
 
-.tab_header .active {
+.active {
   color: #1d4ed8;
   font-weight: bold;
   position: relative;
+}
+
+.btn_tab {
+  outline: none;
+  border: none;
+  background: none;
+  font-size: 1rem;
 }
 
 .tab_header .active .tab_indicator {
@@ -42,4 +66,6 @@ h1 {
   left: -6px;
 }
 
-
+.show {
+  display: none;
+}
