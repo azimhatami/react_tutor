@@ -1,5 +1,6 @@
 import NoteHeader from './components/NoteHeader';
-import './App.css'
+import AddNote from './components/AddNote';
+import './App.css';
 
 function App() {
 
@@ -7,14 +8,7 @@ function App() {
     <>
       <NoteHeader />
       <div className='note_container'>
-        <div className='add_note'>
-          <h2>Add New Note</h2>
-          <form className='note_form'>
-            <input type='text' className='form_title' placeholder='Note title' />
-            <input type='text' className='form_description' placeholder='Note description' />
-            <button type='submit' className='form_btn'>Add New Note</button>
-          </form>
-        </div>
+        <AddNote />
         <div className='note_list'>
           <div className='note_header_status'>
             <ul className='note_status'>
