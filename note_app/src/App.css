@@ -5,3 +5,134 @@
   text-align: center;
 }
 
+.note_header {
+  display: flex;
+  color: var(--primary-900);
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--primary-900);
+  margin-bottom: 3rem;
+}
+
+.note_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add_note {
+  width: 30%;
+  background-color: var(--primary-100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.note_form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form_title {
+  width: 90%;
+  height: 2rem;
+  outline: none;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: var(--primary-50);
+  color: var(--primary-800);
+  font-size: 0.9rem;
+}
+
+.form_description {
+  width: 90%;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: var(--primary-50);
+  color: var(--primary-800);
+  font-size: 0.9rem;
+}
+
+.form_btn {
+  width: 90%;
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 0.5rem;
+  background-color: var(--primary-600);
+  color: var(--primary-800);
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.note_list {
+  width: 60%;
+  background-color: var(--primary-100);
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.note_status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--primary-800);
+  padding-bottom: 1.5rem;
+}
+
+.note_status li {
+  /* background-color: var(--primary-50);
+  width: 9rem;
+  height: 1.8rem;
+  */
+  color: var(--primary-800);
+  font-size: 1.2rem;
+}
+
+.note_items {}
+
+.note_item {
+  background-color: var(--primary-50);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.note_item_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note_title {
+  color: var(--primary-900);
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-align: start;
+  margin-bottom: 0.7rem;
+}
+
+.note_description {
+  color: var(--primary-800);
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.trash {
+  border: none;
+}
+
+.note_footer {
+  text-align: start;
+  font-weight: 300;
+  font-size: 0.8rem;
+}
