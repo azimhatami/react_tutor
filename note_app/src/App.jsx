@@ -12,13 +12,19 @@ function App() {
     setNotes((prevNotes) => [...prevNotes, newNote])
   };
 
+  const handleDeleteNote = (id) => {
+    // const filteredNotes = notes.filter(n => n.id !== id);
+    // setNotes(filteredNotes)
+    setNotes((prevNotes) => prevNotes.filter(n => n.id !== id))
+  };
+
   return (
     <>
       <NoteHeader />
       <div className='note_container'>
         <AddNote onAddNote={ handleAddNote }/>
         <div className='note_list'>
-          <NoteList notes={ notes }/>
+          <NoteList notes={ notes } onDelete={ handleDeleteNote }/>
         </div>
       </div>
     </>
