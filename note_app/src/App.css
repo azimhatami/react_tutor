@@ -107,6 +107,15 @@
   gap: 1.5rem;
 }
 
+.note_completed {
+  opacity: 0.5;
+}
+
+.note_completed .note_title {
+  text-decoration: line-through;
+}
+
+
 .note_item_header {
   display: flex;
   justify-content: space-between;

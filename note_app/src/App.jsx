@@ -18,13 +18,30 @@ function App() {
     setNotes((prevNotes) => prevNotes.filter(n => n.id !== id))
   };
 
+  const handleCompleteNote = (event) => {
+    const noteId = Number(event.target.value);
+    
+//    const newNotes = notes.map((note) =>
+//      note.id === noteId ? {...note, completed: !note.completed} : note
+//    )
+//
+//    setNotes(newNotes)    
+    setNotes((prevNotes) => prevNotes.map((note) => 
+      note.id === noteId ? {...note, completed: !note.completed} : note
+    ))
+  };
+
   return (
     <>
       <NoteHeader />
       <div className='note_container'>
         <AddNote onAddNote={ handleAddNote }/>
         <div className='note_list'>
-          <NoteList notes={ notes } onDelete={ handleDeleteNote }/>
+          <NoteList 
+          notes={ notes } 
+          onDelete={ handleDeleteNote }
+          onComplete={ handleCompleteNote }
+          />
         </div>
       </div>
     </>
