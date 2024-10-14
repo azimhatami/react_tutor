@@ -26,7 +26,7 @@ function AddNote({ onAddNote }) {
   return (
     <>
       <div className='add_note'>
-        <h2>Add New Note</h2>
+        <h2 className='add_note_title'>Add New Note</h2>
         <form className='note_form' onSubmit={handleSubmit}>
           <input 
           value={title} 

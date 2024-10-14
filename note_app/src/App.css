@@ -14,6 +14,17 @@
   margin-bottom: 3rem;
 }
 
+.custom_select {
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  background-color: var(--primary-700);
+  color: var(--primary-800);
+  width: 15rem;
+  height: 1.7rem;
+  font-weight: bold;
+}
+
 .note_container {
   display: flex;
   justify-content: space-between;
@@ -25,6 +36,10 @@
   background-color: var(--primary-100);
   padding: 1rem;
   border-radius: 0.5rem;
+}
+
+.add_note_title {
+  border-bottom: 1px solid var(--primary-800);
 }
 
 .note_form {
