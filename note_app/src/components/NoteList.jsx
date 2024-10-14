@@ -1,18 +1,12 @@
+
 function NoteList({notes, onDelete, onComplete}) {
   return(
     <>
-        <div className='note_header_status'>
-          <ul className='note_status'>
-            <li>All <span>3</span></li>
-            <li>Completed <span>3</span></li>
-            <li>Open <span>3</span></li>
-          </ul>
-        </div>
-        <div className='note_items'>
-          {
-            notes.map((note) => <NoteItem key={note.id} note={note} onDelete={ onDelete } onComplete={onComplete} />)
-          }
-        </div>
+      <div className='note_items'>
+        {
+          notes.map((note) => <NoteItem key={note.id} note={note} onDelete={ onDelete } onComplete={onComplete} />)
+        }
+      </div>
     </>
   );
 }
