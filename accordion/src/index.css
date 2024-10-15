@@ -1,4 +1,28 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  background-color: var(--primary-50);
+
+  --primary-50: #28292D;
+  --primary-100: #2B2F3D;
+  --primary-200: #232B3B;
+  --primary-300: #25305B;
+  --primary-400: #4285F4;
+  --primary-500: #3F75FF;
+  --primary-600: #3A5AB6;
+  --primary-700: #3B59A6;
+  --primary-800: #BED8FE;
+  --primary-900: #EAF2FE;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
 }
 

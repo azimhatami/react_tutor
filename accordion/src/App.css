@@ -1,7 +1,43 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  padding-top: 4rem;
+}
+
+.accordion {
+  border-radius: 1rem;
+  overflow: hidden;
+  max-width: 50rem;
+}
+
+.accordion_item {
+  background-color: var(--primary-100);
+  color: var(--primary-800);
+}
+
+.accordion_item:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+
+.accordion_header {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.accordion_content {
+  max-height: 0px;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  color: var(--primary-900);
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion_expanded .accordion_content{
+  opacity: 1;
+  padding: 1rem 2rem;
+  max-height: 100vh;
 }
 
