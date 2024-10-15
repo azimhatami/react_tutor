@@ -24,6 +24,9 @@
   cursor: pointer;
   font-weight: bold;
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .accordion_content {
@@ -37,7 +40,8 @@
 
 .accordion_expanded .accordion_content{
   opacity: 1;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   max-height: 100vh;
+  transition: all 0.3s ease-in-out;
 }
 
