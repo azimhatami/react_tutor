@@ -1,3 +1,7 @@
+import { EyeIcon } from '@heroicons/react/24/outline';
+import Navbar from './components/Navbar';
+import CharacterList from './components/CharacterList';
+import CharacterDetail from './components/CharacterDetail';
 import { useState } from 'react'
 import './App.css'
 
@@ -5,7 +9,15 @@ function App() {
 
   return (
     <>
-      <h2>Movie Character App</h2>
+      <div className='app'>
+        <Navbar />
+        <div className='sidbar'>
+          <CharacterList />
+        </div>
+        <div className='main'>
+          <CharacterDetail />
+        </div>
+      </div>
     </>
   )
 }
