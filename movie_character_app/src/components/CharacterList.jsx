@@ -22,15 +22,8 @@ function Character({item}) {
       src={item.image} 
       alt={item.image}
       />
-      <h3 className="name">
-        <span>{item.gender === 'Male' ? <IoManSharp className='man' /> : <IoWoman className='woman' />}</span>
-        <span> {item.name}</span>
-      </h3>
-      <div className="list_item_info info">
-        <span className={`status ${item.status === 'Dead' ? 'red' : ''}`}></span>
-        <span> { item.status } </span>
-        <span> - { item.species }</span>
-      </div>
+      <CharacterName item={item} />
+      <CharacterInfo item={item} />
       <button className="icon red">
         <EyeIcon />
       </button>
@@ -39,3 +32,21 @@ function Character({item}) {
   );
 }
 
+function CharacterName({item}) {
+  return(
+    <h3 className="name">
+      <span>{item.gender === 'Male' ? <IoManSharp className='man' /> : <IoWoman className='woman' />}</span>
+      <span> {item.name}</span>
+    </h3>
+  )
+}
+
+function CharacterInfo({item}) {
+  return(
+    <div className="list_item_info info">
+      <span className={`status ${item.status === 'Dead' ? 'red' : ''}`}></span>
+      <span> { item.status } </span>
+      <span> - { item.species }</span>
+    </div>
+  );
+}

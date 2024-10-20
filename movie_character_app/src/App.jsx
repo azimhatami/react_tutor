@@ -8,12 +8,14 @@ import './App.css'
 
 function App() {
 
+  const [characters, setCharacters] = useState(allCharacters);
+
   return (
     <>
       <div className='app'>
-        <Navbar />
+        <Navbar numOfSearch={characters.length} />
         <div className='sidbar'>
-          <CharacterList characters={ allCharacters }/>
+          <CharacterList characters={ characters }/>
         </div>
         <div className='main'>
           <CharacterDetail />
