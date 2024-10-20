@@ -123,6 +123,16 @@
   justify-self: start;
 }
 
+.man {
+  color: #5BBCFF;
+  font-size: 1.5rem;
+}
+
+.woman {
+  color: #FF76CE;
+  font-size: 1.5rem;
+}
+
 
 .list_item .list_item_info {
   grid-column: 2/3;
@@ -159,6 +169,10 @@
   height: 0.7rem;
   border-radius: 50%;
   background-color: var(--green-600);
+}
+
+.red {
+  background-color: var(--rose-600);
 }
 
 .main {
