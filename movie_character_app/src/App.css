@@ -181,7 +181,7 @@
   border-radius: 0.7rem;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 15rem auto;
+  grid-template-rows: 15rem max-content;
   gap: 1.5rem;
 }
 
@@ -206,6 +206,7 @@
 .character_details_info_header {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 3rem;
 }
 
