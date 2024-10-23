@@ -15,9 +15,17 @@ function App() {
     // then((data) => setCharacters(data.results))
 
   useEffect(() => {
-    fetch('https://rickandmortyapi.com/api/character').
-      then((response) => response.json()).
-      then((data) => setCharacters(data.results))
+    async function fetchData() {
+      const response = await fetch('https://rickandmortyapi.com/api/character');
+      const data = await response.json();
+      setCharacters(data.results)
+    }
+
+    fetchData()
+
+    // fetch('https://rickandmortyapi.com/api/character').
+      // then((response) => response.json()).
+      // then((data) => setCharacters(data.results))
   }, [])
 
   return (
