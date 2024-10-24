@@ -6,6 +6,7 @@ import Loader from './components/Loader';
 import { allCharacters } from '../data/data';
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 import './App.css'
 
 function App() {
@@ -21,18 +22,17 @@ function App() {
     async function fetchData() {
       try {
         setIsLoading(true)
-        const response = await fetch('https://rickandmortyapi.com/api/character');
+        const { data } = await axios.get('https://rickandmortyapi.com/api/character');
 
-        if (!response.ok) throw new Error('Something went wrong!');
-
-        const data = await response.json();
+        console.log(data)
         setCharacters(data.results)
         // setIsLoading(false)
       } catch(error) {
+        console.log(error)
         // setIsLoading(false)
         // FOR REAL PROJECT -> error.response.data.message
         // console.log(error.message)
-        toast.error(error.message)
+        toast.error(error.response.data.error)
       } finally {
         setIsLoading(false)
       }
