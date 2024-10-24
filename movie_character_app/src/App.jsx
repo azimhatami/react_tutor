@@ -13,6 +13,7 @@ function App() {
 
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState('');
 
   // Not to fetch in this way:
   // fetch('https://rickandmortyapi.com/api/character').then((res) => res.json()).
@@ -22,23 +23,24 @@ function App() {
     async function fetchData() {
       try {
         setIsLoading(true)
-        const { data } = await axios.get('https://rickandmortyapi.com/api/character');
+        const { data } = await axios.get(
+          `https://rickandmortyapi.com/api/character?name=${query}`
+        );
 
-        console.log(data)
         setCharacters(data.results)
         // setIsLoading(false)
       } catch(error) {
-        console.log(error)
         // setIsLoading(false)
         // FOR REAL PROJECT -> error.response.data.message
         // console.log(error.message)
+        setCharacters([])
         toast.error(error.response.data.error)
       } finally {
         setIsLoading(false)
       }
     }
     fetchData()
-  }, [])
+  }, [query])
 
 
 //  useEffect(() => {
@@ -62,7 +64,7 @@ function App() {
     <>
       <div className='app'>
         <Toaster/>
-        <Navbar numOfSearch={characters.length} />
+        <Navbar numOfSearch={characters.length} query={query} setQuery={setQuery} />
         <div className='sidbar'>
           { isLoading ? <Loader/> : <CharacterList characters={ characters }/>}
         </div>
