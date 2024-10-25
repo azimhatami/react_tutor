@@ -62,7 +62,7 @@ function App() {
 //  }, [])
 
   const handleSelectCharacter = (id) => {
-    setSelectedId(id)
+    setSelectedId(prevId => prevId === id ? null : id)
   }
 
   console.log(selectedId)
@@ -73,10 +73,10 @@ function App() {
         <Toaster/>
         <Navbar numOfSearch={characters.length} query={query} setQuery={setQuery} />
         <div className='sidbar'>
-          { isLoading ? <Loader/> : <CharacterList characters={ characters } onSelectCharacter={handleSelectCharacter} />}
+          { isLoading ? <Loader/> : <CharacterList characters={ characters } onSelectCharacter={handleSelectCharacter} selectedId={selectedId} />}
         </div>
         <div className='main'>
-          <CharacterDetail selectedId={selectedId}/>
+          <CharacterDetail selectedId={selectedId} toast={toast}/>
         </div>
       </div>
     </>

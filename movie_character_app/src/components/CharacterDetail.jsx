@@ -1,9 +1,50 @@
 import { ArrowUpCircleIcon } from '@heroicons/react/24/outline';
 import { IoManSharp, IoWoman} from 'react-icons/io5';
-import { character } from '../../data/data';
-import { episodes } from '../../data/data';
+// import { episodes } from '../../data/data';
+// import { character } from '../../data/data';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Loader from './Loader';
 
-function CharacterDetail({selectedId}) {
+function CharacterDetail({selectedId, toast}) {
+
+  const [character, setCharacter] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
+  const [episodes, setEpisodes] = useState([])
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        setIsLoading(true)
+        setCharacter(null)
+        const {data} = await axios.get(
+          `https://rickandmortyapi.com/api/character/${selectedId}`
+        );
+        console.log(data)
+        setCharacter(data)
+        setEpisodes(data.episode)
+      } catch (error) {
+        toast.error(error.response.data.error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (selectedId) fetchData()
+  }, [selectedId])
+
+    if (isLoading) 
+      return (
+        <div>
+          <Loader/>
+        </div>
+      )
+
+  if (!character || !selectedId)
+    return (
+        <div>Please Select a Character!</div> 
+    );
+  
 
   return (
     <>
@@ -17,7 +58,7 @@ function CharacterDetail({selectedId}) {
           <div className='character_details_info_header'>
             <h3 className="name">
               <span>{character.gender === 'Male' ? <IoManSharp className='man' /> : <IoWoman className='woman' />}</span>
-              <span> Rick Sanchez</span>
+              <span> {character.name}</span>
             </h3>
             <div className='info'>
               <span className={`status ${character.status === 'Dead' ? 'red' : ''}`}></span>
