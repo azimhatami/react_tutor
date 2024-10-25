@@ -14,6 +14,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
+  const [selectedId, setSelectedId] = useState(null);
 
   // Not to fetch in this way:
   // fetch('https://rickandmortyapi.com/api/character').then((res) => res.json()).
@@ -60,16 +61,22 @@ function App() {
 //      }).finally(() => setIsLoading(false))
 //  }, [])
 
+  const handleSelectCharacter = (id) => {
+    setSelectedId(id)
+  }
+
+  console.log(selectedId)
+
   return (
     <>
       <div className='app'>
         <Toaster/>
         <Navbar numOfSearch={characters.length} query={query} setQuery={setQuery} />
         <div className='sidbar'>
-          { isLoading ? <Loader/> : <CharacterList characters={ characters }/>}
+          { isLoading ? <Loader/> : <CharacterList characters={ characters } onSelectCharacter={handleSelectCharacter} />}
         </div>
         <div className='main'>
-          <CharacterDetail />
+          <CharacterDetail selectedId={selectedId}/>
         </div>
       </div>
     </>

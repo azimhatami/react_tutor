@@ -3,7 +3,8 @@ import { IoManSharp, IoWoman} from 'react-icons/io5';
 import { character } from '../../data/data';
 import { episodes } from '../../data/data';
 
-function CharacterDetail() {
+function CharacterDetail({selectedId}) {
+
   return (
     <>
       <div className='character_details'>
