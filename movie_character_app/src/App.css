@@ -86,6 +86,7 @@
   grid-area: sidbar;
   color: var(--slate-200);
   border-radius: 0.7rem;
+  overflow-y: scroll;
 }
 
 .characters-list {

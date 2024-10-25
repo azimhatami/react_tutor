@@ -20,9 +20,16 @@ function CharacterDetail({selectedId, toast}) {
         const {data} = await axios.get(
           `https://rickandmortyapi.com/api/character/${selectedId}`
         );
-        console.log(data)
+        // console.log(data)
         setCharacter(data)
-        setEpisodes(data.episode)
+
+        const episodesId = data.episode.map((ep) => ep.split('/').at(-1))
+        const {data: episodeData} = await axios.get(
+          `https://rickandmortyapi.com/api/episode/${episodesId}`
+        );
+        console.log(episodeData)
+        // console.log(episodesId)
+        setEpisodes([episodeData].flat().slice(0, 5))
       } catch (error) {
         toast.error(error.response.data.error)
       } finally {
