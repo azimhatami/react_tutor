@@ -6,7 +6,14 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from './Loader';
 
-function CharacterDetail({selectedId, toast}) {
+function CharacterDetail(
+  {
+    selectedId, 
+    toast, 
+    onAddFavourite,
+    isAddToFavourite
+  }
+) {
 
   const [character, setCharacter] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -27,7 +34,7 @@ function CharacterDetail({selectedId, toast}) {
         const {data: episodeData} = await axios.get(
           `https://rickandmortyapi.com/api/episode/${episodesId}`
         );
-        console.log(episodeData)
+        // console.log(episodeData)
         // console.log(episodesId)
         setEpisodes([episodeData].flat().slice(0, 5))
       } catch (error) {
@@ -78,7 +85,24 @@ function CharacterDetail({selectedId, toast}) {
             <p>{character.location.name}</p>
           </div>
           <div className="actions">
-            <button className="btn btn_primary">Add to Favourite</button>
+            {
+              // isAddToFavourite ? <p>Already added to favourites &#x2713;</p>:
+              isAddToFavourite ? 
+              <button 
+                className="btn"
+                onClick={() => onAddFavourite(character)}
+                disabled
+              >
+                Add to Favourite
+              </button> 
+                :
+              <button 
+                className="btn btn_primary"
+                onClick={() => onAddFavourite(character)}
+              >
+                Add to Favourite
+              </button>
+            }
           </div>
         </div>
       </div>

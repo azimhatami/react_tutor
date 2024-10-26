@@ -15,6 +15,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState(null);
+  const [favourites, setFavourites] = useState([]);
 
   // Not to fetch in this way:
   // fetch('https://rickandmortyapi.com/api/character').then((res) => res.json()).
@@ -65,18 +66,32 @@ function App() {
     setSelectedId(prevId => prevId === id ? null : id)
   }
 
-  console.log(selectedId)
+  const handleAddFavourite = (character) => {
+    setFavourites((prevFav) => [...prevFav, character])
+  }
+
+  const isAddToFavourite = favourites.map((fav) => fav.id).includes(selectedId)
+
 
   return (
     <>
       <div className='app'>
         <Toaster/>
-        <Navbar numOfSearch={characters.length} query={query} setQuery={setQuery} />
+        <Navbar 
+          numOfSearch={characters.length} 
+          query={query} setQuery={setQuery} 
+          numOfFavourites={favourites.length}
+        />
         <div className='sidbar'>
           { isLoading ? <Loader/> : <CharacterList characters={ characters } onSelectCharacter={handleSelectCharacter} selectedId={selectedId} />}
         </div>
         <div className='main'>
-          <CharacterDetail selectedId={selectedId} toast={toast}/>
+          <CharacterDetail 
+            selectedId={selectedId} 
+            toast={toast}
+            onAddFavourite={handleAddFavourite}
+            isAddToFavourite={isAddToFavourite}
+          />
         </div>
       </div>
     </>
