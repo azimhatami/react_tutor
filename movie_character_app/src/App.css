@@ -272,6 +272,10 @@
   background: none;
   width: 1.8rem;
   color: var(--slate-100);
+  transition: rotat 0.4s linear;
+}
+
+.character_episodes .title button .arrow_icon {
 }
 
 li {

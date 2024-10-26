@@ -22,11 +22,15 @@ function App() {
     // then((data) => setCharacters(data.results))
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     async function fetchData() {
       try {
         setIsLoading(true)
         const { data } = await axios.get(
-          `https://rickandmortyapi.com/api/character?name=${query}`
+          `https://rickandmortyapi.com/api/character?name=${query}`,
+          { signal: signal }
         );
 
         setCharacters(data.results)
@@ -35,13 +39,26 @@ function App() {
         // setIsLoading(false)
         // FOR REAL PROJECT -> error.response.data.message
         // console.log(error.message)
-        setCharacters([])
-        toast.error(error.response.data.error)
+        // fetch => error.name === 'AbortError'
+        // axios => axios.isCancel()
+
+        if (axios.isCancel(error)) {
+          console.log('cancel sucessfully')
+        } else {
+          setCharacters([])
+          toast.error(error.response.data.error)
+        }
       } finally {
         setIsLoading(false)
       }
     }
     fetchData()
+
+    // Clean Up function
+    return () => {
+      // cancel the request before component unmounts
+      controller.abort()
+    };
   }, [query])
 
 

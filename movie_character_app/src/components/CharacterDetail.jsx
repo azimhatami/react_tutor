@@ -1,4 +1,4 @@
-import { ArrowUpCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowUpCircleIcon, ArrowDownCircleIcon } from '@heroicons/react/24/outline';
 import { IoManSharp, IoWoman} from 'react-icons/io5';
 // import { episodes } from '../../data/data';
 // import { character } from '../../data/data';
@@ -62,6 +62,22 @@ function CharacterDetail(
 
   return (
     <>
+      <CharacterSubInfo
+        character={character}
+        onAddFavourite={onAddFavourite} 
+        isAddToFavourite={isAddToFavourite}
+      />
+      <EpisodeList episodes={episodes}/>
+    </>
+  );
+}
+
+
+export default CharacterDetail;
+
+function CharacterSubInfo({character, onAddFavourite, isAddToFavourite}) {
+  return (
+    <>
       <div className='character_details'>
         <img 
         src={character.image} 
@@ -106,15 +122,38 @@ function CharacterDetail(
           </div>
         </div>
       </div>
+    </>
+  );
+}
+
+function EpisodeList({episodes}) {
+  const [sortBy, setSortBy] = useState(true);
+
+  let sortedEpisode;
+
+  if (sortBy) {
+    sortedEpisode = [...episodes].sort(
+      // Ascending
+      (a, b) => new Date(b.created) - new Date(a.created)
+    )
+  } else {
+    sortedEpisode = [...episodes].sort(
+      // Descending
+      (a, b) => new Date(a.created) - new Date(b.created)
+    )
+  }
+
+  return(
+    <>
       <div className='character_episodes'>
         <div className='title'>
           <h2>List of Episodes:</h2>
-          <button>
-            <ArrowUpCircleIcon />
+          <button onClick={() => setSortBy(is => !is)}>
+            { sortBy ? <ArrowUpCircleIcon className='arrow_icon'/> : <ArrowDownCircleIcon className='.arrow_icon'/> }
           </button>
         </div>
         <ul>
-          {episodes.map((item, index) => 
+          {sortedEpisode.map((item, index) => 
             <li key={item.id}>
               <div>{String(index + 1).padStart(2, '0')} - {item.episode} : <strong>{item.name}</strong></div>
               <div className="badge badge_secondary">{item.air_date}</div>
@@ -125,6 +164,3 @@ function CharacterDetail(
     </>
   );
 }
-
-
-export default CharacterDetail;
