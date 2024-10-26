@@ -7,6 +7,7 @@ import { allCharacters } from '../data/data';
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import Modal from './components/Modal';
 import './App.css'
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
     <>
       <div className='app'>
         <Toaster/>
+        <Modal title={title} onClose={true}/>
         <Navbar 
           numOfSearch={characters.length} 
           query={query} setQuery={setQuery} 
