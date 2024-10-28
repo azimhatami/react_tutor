@@ -15,7 +15,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState(null);
-  const [favourites, setFavourites] = useState([]);
+  const [favourites, setFavourites] = useState(
+    () => JSON.parse(localStorage.getItem('FAVOURITES')) || []);
 
   // Not to fetch in this way:
   // fetch('https://rickandmortyapi.com/api/character').then((res) => res.json()).
@@ -78,6 +79,10 @@ function App() {
 //        toast.error(error.message)
 //      }).finally(() => setIsLoading(false))
 //  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('FAVOURITES', JSON.stringify(favourites))
+  }, [favourites])
 
   const handleSelectCharacter = (id) => {
     setSelectedId(prevId => prevId === id ? null : id)
