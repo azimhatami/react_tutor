@@ -9,9 +9,11 @@ function CharacterList({characters, selectedId, onSelectCharacter}) {
         <Character 
           key={item.id} 
           item={item} 
-          onSelectCharacter={onSelectCharacter}
-          selectedId={selectedId}
-        />)} 
+        >
+          <button className="icon red" onClick={() => onSelectCharacter(item.id)} >
+            {selectedId === item.id ? <EyeIcon /> : <EyeSlashIcon /> }
+          </button>
+        </Character>)} 
     </div>
   );
 }
@@ -20,7 +22,7 @@ function CharacterList({characters, selectedId, onSelectCharacter}) {
 export default CharacterList;
 
 
-function Character({item, onSelectCharacter, selectedId}) {
+export function Character({item, children}) {
   return (
     <>
     <div className='list_item'>
@@ -30,9 +32,7 @@ function Character({item, onSelectCharacter, selectedId}) {
       />
       <CharacterName item={item} />
       <CharacterInfo item={item} />
-      <button className="icon red" onClick={() => onSelectCharacter(item.id)} >
-        {selectedId === item.id ? <EyeIcon /> : <EyeSlashIcon /> }
-      </button>
+      {children}
     </div>
     </>
   );

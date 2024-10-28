@@ -7,7 +7,6 @@ import { allCharacters } from '../data/data';
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
-import Modal from './components/Modal';
 import './App.css'
 
 function App() {
@@ -90,16 +89,19 @@ function App() {
 
   const isAddToFavourite = favourites.map((fav) => fav.id).includes(selectedId)
 
+  const handleDeleteFavourite = (id) => {
+    setFavourites((prevFav) => prevFav.filter(fav => fav.id !== id))
+  }
 
   return (
     <>
       <div className='app'>
         <Toaster/>
-        <Modal title={title} onClose={true}/>
         <Navbar 
           numOfSearch={characters.length} 
           query={query} setQuery={setQuery} 
-          numOfFavourites={favourites.length}
+          favourites={favourites}
+          onDelete={handleDeleteFavourite}
         />
         <div className='sidbar'>
           { isLoading ? <Loader/> : <CharacterList characters={ characters } onSelectCharacter={handleSelectCharacter} selectedId={selectedId} />}

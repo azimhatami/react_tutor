@@ -1,16 +1,20 @@
-import { xCircleIcon } from '@heroicons/react/24/outline'
+import { XCircleIcon } from '@heroicons/react/24/outline';
 
-function Modal() {
-  return(
+function Modal({title, open, onOpen, children}) {
+
+  if (!open) return null
+
+  return (
     <>
-      <div className='backdrop'></div>
+      <div className='backdrop' onClick={() => onOpen(false)}></div>
       <div className='modal'>
         <div className='modal_header'>
           <h2 className='title'>{title}</h2>
-          <button>
-            <xCircleIcon />
+          <button onClick={() => onOpen(false)}>
+            <XCircleIcon className='icon'/>
           </button>
         </div>
+        {children}
       </div>
     </>
   );
