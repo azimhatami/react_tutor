@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import useCharacters from './hooks/useCharacters';
+import useLocalStorage from './hooks/useLocalStorage';
 import './App.css'
 
 function App() {
@@ -15,8 +16,7 @@ function App() {
   const [query, setQuery] = useState('');
   const {isLoading, characters} = useCharacters(query)
   const [selectedId, setSelectedId] = useState(null);
-  const [favourites, setFavourites] = useState(
-    () => JSON.parse(localStorage.getItem('FAVOURITES')) || []);
+  const [favourites, setFavourites] = useLocalStorage('FAVOURITES', []);
 
   // Not to fetch in this way:
   // fetch('https://rickandmortyapi.com/api/character').then((res) => res.json()).
@@ -40,9 +40,6 @@ function App() {
 //      }).finally(() => setIsLoading(false))
 //  }, [])
 
-  useEffect(() => {
-    localStorage.setItem('FAVOURITES', JSON.stringify(favourites))
-  }, [favourites])
 
   const handleSelectCharacter = (id) => {
     setSelectedId(prevId => prevId === id ? null : id)
