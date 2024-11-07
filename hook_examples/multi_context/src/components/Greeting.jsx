@@ -1,11 +1,10 @@
-import { useContext } from 'react';
-import { CurrentUserContext } from '../App';
+import { useUser } from '../context/UserContext';
 
 function Greeting() {
-  const {currentUser} = useContext(CurrentUserContext);
+  const {user} = useUser();
   return(
     <>
-      <p>You logged in as {currentUser.name}</p>
+      <p>You logged in as {user.name}</p>
     </>
   );
 }
