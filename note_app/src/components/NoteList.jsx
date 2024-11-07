@@ -1,5 +1,9 @@
+import { useNotes, useNotesDispatch } from '../context/NotesContext';
 
-function NoteList({notes, onDelete, onComplete, sortBy}) {
+
+function NoteList({ onDelete, onComplete, sortBy }) {
+
+  const notes = useNotes();
 
   let sortedNotes = notes;
 
@@ -29,7 +33,9 @@ function NoteList({notes, onDelete, onComplete, sortBy}) {
 export default NoteList;
 
 
-function NoteItem({note, onDelete, onComplete}) {
+function NoteItem({note}) {
+
+  const dispatch = useNotesDispatch();
 
   const options = {
     year: 'numeric', 
@@ -46,13 +52,16 @@ function NoteItem({note, onDelete, onComplete}) {
             <p className='note_description'>{note.description}</p>
           </div>
           <div className='actions'>
-            <button className='trash' onClick={() => onDelete(note.id)}>&#xe872;</button>
+            <button className='trash' onClick={() => dispatch({type: 'delete', payload: note.id})}>&#xe872;</button>
             <input 
             type='checkbox' 
             name={note.id} 
             id={note.id} 
             value={note.id} 
-            onChange={onComplete}
+            onChange={(e) => {
+              const noteId = Number(e.target.value);
+              dispatch({type: 'complete', payload: noteId})
+            }}
             checked={note.completed}
             />
           </div>

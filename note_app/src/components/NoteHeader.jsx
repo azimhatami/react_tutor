@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useNotes, useNotesDispatch } from '../context/NotesContext';
 
-function NoteHeader({ notes, sortBy, onSort }) {
+function NoteHeader({ sortBy, onSort }) {
+
+  const notes = useNotes();
+
 
   return (
     <>
