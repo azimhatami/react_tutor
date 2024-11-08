@@ -9,6 +9,7 @@ nav {
   border: 1px solid #777;
   border-radius: 0.4rem;
   padding: 1rem;
+  margin-bottom: 1.5rem;
 }
 nav ul {
   display: flex;
@@ -18,4 +19,9 @@ nav ul {
 
 nav ul a:hover {
   color: #fff;
+}
+
+nav ul li a.active {
+  font-size: 1.2rem;
+  color: #eee
 }
