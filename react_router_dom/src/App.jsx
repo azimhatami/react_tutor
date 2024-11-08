@@ -3,16 +3,17 @@ import "./App.css";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Dashboard from "./pages/Dashboard";
-import Navbar from "./components/Navbar";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/posts' element={<Posts />} />
-        <Route path='/Dashboard' element={<Dashboard />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/posts" element={<Posts />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </>
   );
