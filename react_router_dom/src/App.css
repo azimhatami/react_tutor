@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+nav {
+  border: 1px solid #777;
+  border-radius: 0.4rem;
+  padding: 1rem;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+nav ul a:hover {
+  color: #fff;
+}
