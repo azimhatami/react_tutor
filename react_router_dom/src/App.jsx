@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
+import Profile from "./components/Profile";
+import Payments from "./components/Payments";
 
 function App() {
   return (
@@ -12,7 +14,10 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/posts" element={<Posts />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path='profile' element={<Profile />}/>
+            <Route path='payments' element={<Payments />}/>
+          </Route>
         </Route>
       </Routes>
     </>
