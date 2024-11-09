@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import Payments from "./components/Payments";
+import Post from "./components/Post";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="/posts/:id" element={<Post />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path='profile' element={<Profile />}/>
