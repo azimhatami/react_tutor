@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Posts from "./pages/Posts";
 import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import Payments from "./components/Payments";
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/posts/:id" element={<Post />} />
           <Route path="/posts" element={<Posts />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path='profile' element={<Profile />}/>
             <Route path='payments' element={<Payments />}/>
