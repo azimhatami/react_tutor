@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiCalendar } from "react-icons/hi";
+import { HiCalendar, HiMinus, HiPlus } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
 
@@ -47,41 +47,27 @@ export function GuestOptionList() {
   return (
     <>
       <div className="w-56 h-30 bg-slate-200 rounded-lg absolute top-[90px] drop-shadow-xl transition-all ease-in-out duration-700 delay-700 py-2 flex flex-col gap-2">
-        <div className="flex align-center justify-around">
-          <span>Adult</span>
-          <div className="flex align-center justify-around w-28">
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              -
-            </button>
-            <span>4</span>
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              +
-            </button>
-          </div>
-        </div>
-        <div className="flex align-center justify-around">
-          <span>Children</span>
-          <div className="flex align-center justify-around w-28">
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              -
-            </button>
-            <span>4</span>
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              +
-            </button>
-          </div>
-        </div>
-        <div className="flex align-center justify-around">
-          <span>Room</span>
-          <div className="flex align-center justify-around w-28">
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              -
-            </button>
-            <span>4</span>
-            <button className="bg-purple-700 text-slate-50 w-8 rounded-lg">
-              +
-            </button>
-          </div>
+        <OptionItem />
+        <OptionItem />
+        <OptionItem />
+      </div>
+    </>
+  );
+}
+
+export function OptionItem() {
+  return (
+    <>
+      <div className="flex align-center justify-around">
+        <span>Adult</span>
+        <div className="flex align-center justify-around w-28">
+          <button className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center">
+            <HiMinus />
+          </button>
+          <span>4</span>
+          <button className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center">
+            <HiPlus />
+          </button>
         </div>
       </div>
     </>
