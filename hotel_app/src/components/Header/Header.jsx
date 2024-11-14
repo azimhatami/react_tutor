@@ -6,6 +6,21 @@ import { MdLocationPin } from "react-icons/md";
 export function Header() {
   const [destination, setDestination] = useState("");
   const [openOptions, setOpenOptions] = useState(false);
+  const [options, setOptions] = useState({
+    adult: 1,
+    children: 0,
+    room: 1,
+  });
+
+  const handleOptions = (name, operation) => {
+    setOptions((prev) => {
+      return {
+        ...prev,
+        [name]: operation === 'inc' ? options[name] + 1 : options[name] - 1
+      }
+    });
+  };
+
   return (
     <>
       <div className="border-solid border-[1px] border-slate-400 rounded-md py-4">
@@ -28,9 +43,9 @@ export function Header() {
           <span className="w-[1px] h-7 bg-slate-400"></span>
           <div>
             <div className="" onClick={() => setOpenOptions(!openOptions)}>
-              1 adult - 2 children - 1 room
+              {options.adult} adult - {options.children} children - {options.room} room
             </div>
-            {openOptions && <GuestOptionList />}
+            {openOptions && <GuestOptionList options={options} handleOptions={handleOptions} />}
           </div>
           <div>
             <button className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center">
@@ -43,29 +58,36 @@ export function Header() {
   );
 }
 
-export function GuestOptionList() {
+export function GuestOptionList({ options, handleOptions}) {
   return (
     <>
       <div className="w-56 h-30 bg-slate-200 rounded-lg absolute top-[90px] drop-shadow-xl transition-all ease-in-out duration-700 delay-700 py-2 flex flex-col gap-2">
-        <OptionItem />
-        <OptionItem />
-        <OptionItem />
+        <OptionItem type="adult" options={options} minLimit={1} handleOptions={handleOptions} />
+        <OptionItem type="children" options={options} minLimit={0} handleOptions={handleOptions} />
+        <OptionItem type="room" options={options} minLimit={1} handleOptions={handleOptions} />
       </div>
     </>
   );
 }
 
-export function OptionItem() {
+export function OptionItem({ type, options, minLimit, handleOptions }) {
   return (
     <>
       <div className="flex align-center justify-around">
-        <span>Adult</span>
+        <span>{type}</span>
         <div className="flex align-center justify-around w-28">
-          <button className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center">
+          <button
+            className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center"
+            disabled={options[type] <= minLimit}
+            onClick={() => handleOptions(type, 'dec')}
+          >
             <HiMinus />
           </button>
-          <span>4</span>
-          <button className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center">
+          <span>{options[type]}</span>
+          <button 
+            className="bg-purple-700 text-slate-50 w-8 rounded-lg flex place-content-center place-items-center"
+            onClick={() => handleOptions(type, 'inc')}
+          >
             <HiPlus />
           </button>
         </div>
