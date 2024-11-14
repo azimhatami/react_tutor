@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { HiCalendar, HiMinus, HiPlus } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
+import useOutsideClick from "../../hooks/useOutsideClick";
 
 export function Header() {
   const [destination, setDestination] = useState("");
@@ -42,10 +43,10 @@ export function Header() {
           </div>
           <span className="w-[1px] h-7 bg-slate-400"></span>
           <div>
-            <div className="" onClick={() => setOpenOptions(!openOptions)}>
+            <div className="" id='optionDropDown' onClick={() => setOpenOptions(!openOptions)}>
               {options.adult} adult - {options.children} children - {options.room} room
             </div>
-            {openOptions && <GuestOptionList options={options} handleOptions={handleOptions} />}
+            {openOptions && <GuestOptionList options={options} handleOptions={handleOptions} setOpenOptions={setOpenOptions} />}
           </div>
           <div>
             <button className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center">
@@ -58,10 +59,15 @@ export function Header() {
   );
 }
 
-export function GuestOptionList({ options, handleOptions}) {
+export function GuestOptionList({ options, handleOptions, setOpenOptions }) {
+  const optionsRef = useRef();
+  useOutsideClick(optionsRef, 'optionDropDown',() => setOpenOptions(false));
   return (
     <>
-      <div className="w-56 h-30 bg-slate-200 rounded-lg absolute top-[90px] drop-shadow-xl transition-all ease-in-out duration-700 delay-700 py-2 flex flex-col gap-2">
+      <div 
+        className="w-56 h-30 bg-slate-200 rounded-lg absolute top-[90px] drop-shadow-xl transition-all ease-in-out duration-700 delay-700 py-2 flex flex-col gap-2"
+        ref={optionsRef}
+      >
         <OptionItem type="adult" options={options} minLimit={1} handleOptions={handleOptions} />
         <OptionItem type="children" options={options} minLimit={0} handleOptions={handleOptions} />
         <OptionItem type="room" options={options} minLimit={1} handleOptions={handleOptions} />
