@@ -3,6 +3,10 @@ import { HiCalendar, HiMinus, HiPlus } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { format } from 'date-fns';
 
 export function Header() {
   const [destination, setDestination] = useState("");
@@ -12,6 +16,14 @@ export function Header() {
     children: 0,
     room: 1,
   });
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(), 
+      endDate: new Date(),
+      key: 'selection'
+    }
+  ]);
+  const [openDate, setOpenDate] = useState(false);
 
   const handleOptions = (name, operation) => {
     setOptions((prev) => {
@@ -37,16 +49,33 @@ export function Header() {
             />
           </div>
           <span className="w-[1px] h-7 bg-slate-400"></span>
-          <div className="flex items-center justify-between w-[7rem]">
+          <div className="flex items-center justify-between w-[15rem]">
             <HiCalendar className="text-purple-700 text-2xl" />
-            <div>2024/05/11</div>
+            <div onClick={() => setOpenDate(!openDate)}>
+              {`${format(date[0].startDate, 'yyyy/MM/dd')} to ${format(date[0].endDate, 'yyyy/MMM/dd')}`}
+            </div>
+            {
+              openDate && <DateRange
+                            className='absolute top-[6.4rem] right-[36rem]'
+                            ranges={date} 
+                            onChange={(item) => setDate([item.selection])} 
+                            minDate={new Date()}
+                            moveRangeOnFirstSelection={true}
+                          />
+            }
           </div>
           <span className="w-[1px] h-7 bg-slate-400"></span>
           <div>
             <div className="" id='optionDropDown' onClick={() => setOpenOptions(!openOptions)}>
               {options.adult} adult - {options.children} children - {options.room} room
             </div>
-            {openOptions && <GuestOptionList options={options} handleOptions={handleOptions} setOpenOptions={setOpenOptions} />}
+            {
+              openOptions && <GuestOptionList 
+                              options={options} 
+                              handleOptions={handleOptions} 
+                              setOpenOptions={setOpenOptions} 
+                            />
+            }
           </div>
           <div>
             <button className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center">
