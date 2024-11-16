@@ -1,12 +1,15 @@
 import {Header} from './components/Header/Header';
+import { Toaster } from 'react-hot-toast';
+import LocationList from './components/LocationList/LocationList';
 import './App.css'
 
 function App() {
 
   return (
     <>
+      <Toaster />
       <Header />
-      <h2>Hotel App</h2>
+      <LocationList />
     </>
   )
 }
