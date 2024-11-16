@@ -2,6 +2,7 @@ import {Header} from './components/Header/Header';
 import { Toaster } from 'react-hot-toast';
 import LocationList from './components/LocationList/LocationList';
 import './App.css'
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
@@ -9,7 +10,10 @@ function App() {
     <>
       <Toaster />
       <Header />
-      <LocationList />
+      {/* <LocationList /> */}
+      <Routes>
+        <Route path='/' element={<LocationList />} />
+      </Routes>
     </>
   )
 }

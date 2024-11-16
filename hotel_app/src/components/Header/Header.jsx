@@ -4,9 +4,10 @@ import { IoSearch } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { DateRange } from 'react-date-range';
+import { format } from 'date-fns';
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { format } from 'date-fns';
 
 export function Header() {
   const [destination, setDestination] = useState("");
@@ -24,6 +25,8 @@ export function Header() {
     }
   ]);
   const [openDate, setOpenDate] = useState(false);
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const handleOptions = (name, operation) => {
     setOptions((prev) => {
@@ -33,6 +36,19 @@ export function Header() {
       }
     });
   };
+
+  const handleSearch = () => {
+    const encodedParams = createSearchParams({
+      date: JSON.stringify(date),
+      destination,
+      options: JSON.stringify(options)
+    })
+    // setSearchParams(encodedParams)
+    navigate({
+      pathname: '/hotels',
+      search: encodedParams.toString()
+    })
+  }
 
   return (
     <>
@@ -78,7 +94,10 @@ export function Header() {
             }
           </div>
           <div>
-            <button className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center">
+            <button 
+              className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center"
+              onClick={handleSearch}
+            >
               <IoSearch className="flex m-auto" />
             </button>
           </div>
