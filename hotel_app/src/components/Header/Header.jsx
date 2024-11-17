@@ -42,13 +42,13 @@ export function Header() {
       date: JSON.stringify(date),
       destination,
       options: JSON.stringify(options)
-    })
+    });
     // setSearchParams(encodedParams)
     navigate({
       pathname: '/hotels',
       search: encodedParams.toString()
     })
-  }
+  };
 
   return (
     <>

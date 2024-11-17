@@ -11,8 +11,6 @@ function Hotels() {
     `q=${destination || ''}&accommodates_gte=${room || 1}`
   );
 
-  console.log(destination)
-
   if (isLoading) {
     return <p>Loading...</p>
   }
