@@ -5,11 +5,14 @@ import AppLayout from './components/AppLayout/AppLayout';
 import Hotels from './components/Hotels/Hotels';
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
+import HotelsProvider from './components/context/HotelsProvider';
+
 
 function App() {
 
   return (
     <>
+      <HotelsProvider>
       <Toaster />
       <Header />
       {/* <LocationList /> */}
@@ -20,6 +23,7 @@ function App() {
           <Route path=':id' element={<div>Single hotel</div>} />
         </Route>
       </Routes>
+      </HotelsProvider>
     </>
   )
 }
