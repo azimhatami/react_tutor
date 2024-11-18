@@ -37,7 +37,6 @@ function Hotels() {
                     <span className='font-normal text-slate-500'>night</span>
                   </p>
                 </div>
-                <p></p>
               </div>
             </Link>
             );
