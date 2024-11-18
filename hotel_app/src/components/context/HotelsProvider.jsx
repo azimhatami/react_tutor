@@ -26,5 +26,7 @@ export default HotelsProvider
 
 
 export function useHotels() {
-  return useContext(HotelContext);
+  return(
+    useContext(HotelContext)
+  );
 }
