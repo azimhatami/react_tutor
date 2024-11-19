@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup, } from 'react-leaflet'
 import { useState, useEffect } from 'react'
 import { useHotels } from '../context/HotelsProvider'
 import { useSearchParams } from 'react-router-dom';
-
+import useGeoLocation from '../../hooks/useGeoLocation';
 
 function Map() {
   const {isLoading, hotels} = useHotels();
@@ -11,19 +11,37 @@ function Map() {
   const lat = searchParams.get('lat');
   const lng = searchParams.get('lng');
 
+  const {
+    isLoading: isLoadingPosition, 
+    position: geolocationPosition, 
+    getPosition
+  } = useGeoLocation()
+
   useEffect(() => {
     if (lat && lng) setMapCenter([lat, lng]);
   }, [lat, lng]);
 
+  useEffect(() => {
+    if (geolocationPosition?.lat && geolocationPosition?.lng) 
+      setMapCenter([geolocationPosition.lat, geolocationPosition.lng])
+  }, [geolocationPosition]);
+
   return(
     <>
-      <div className='overflow-auto my-[2rem]'>
+      <div className='overflow-auto mt-[2rem]'>
         <MapContainer 
-          className='h-full' 
+          className='h-[35rem] overflow-auto' 
           center={mapCenter} 
           zoom={13} 
           scrollWheelZoom={true}
         >
+          <button
+            onClick={getPosition}
+            className=
+              'bg-purple-700 text-slate-300 absolute bottom-6 left-6 rounded-md px-1 text-[1rem] font-bold z-[1000] shadow-lg shadow-purple-500 opacity-90 hover:opacity-100'
+          >
+            { isLoadingPosition ? 'Loading ...' : 'Use Your Location' }
+          </button>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png"
