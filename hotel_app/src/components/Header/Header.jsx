@@ -66,7 +66,7 @@ export function Header() {
           </div>
           <span className="w-[1px] h-7 bg-slate-400"></span>
           <div className="flex items-center justify-between w-[15rem]">
-            <HiCalendar className="text-purple-700 text-2xl" />
+            <HiCalendar className="text-blue-600 text-2xl" />
             <div onClick={() => setOpenDate(!openDate)}>
               {`${format(date[0].startDate, 'yyyy/MM/dd')} to ${format(date[0].endDate, 'yyyy/MMM/dd')}`}
             </div>
@@ -95,7 +95,7 @@ export function Header() {
           </div>
           <div>
             <button 
-              className="bg-purple-700 text-slate-300 w-10 h-10 rounded-full text-2xl flex items-center"
+              className="bg-blue-600 text-slate-100 w-10 h-8 rounded-lg text-2xl flex items-center"
               onClick={handleSearch}
             >
               <IoSearch className="flex m-auto" />

@@ -38,7 +38,7 @@ function Map() {
           <button
             onClick={getPosition}
             className=
-              'bg-purple-700 text-slate-300 absolute bottom-6 left-6 rounded-md px-1 text-[1rem] font-bold z-[1000] shadow-lg shadow-purple-500 opacity-90 hover:opacity-100'
+              'bg-blue-600 text-slate-100 absolute bottom-6 left-6 rounded-md px-1.5 py-0.5 font-bold z-[1000] hover:shadow-lg shadow-blue-500'
           >
             { isLoadingPosition ? 'Loading ...' : 'Use Your Location' }
           </button>
