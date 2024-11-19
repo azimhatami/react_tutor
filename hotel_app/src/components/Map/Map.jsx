@@ -28,9 +28,9 @@ function Map() {
 
   return(
     <>
-      <div className='overflow-auto mt-[2rem]'>
+      <div className='overflow-auto mt-[2rem] rounded-lg'>
         <MapContainer 
-          className='h-[35rem] overflow-auto' 
+          className='h-[35rem]' 
           center={mapCenter} 
           zoom={13} 
           scrollWheelZoom={true}
