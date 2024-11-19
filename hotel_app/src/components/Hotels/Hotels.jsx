@@ -12,8 +12,8 @@ function Hotels() {
   return(
     <>
       <div>
-        <h2 className='text-start my-6 text-lg font-medium'>Search Results ({hotels.length})</h2>
-        <div className='flex flex-col overflow-auto h-screen gap-y-6'>
+        <h2 className='text-start my-4 text-lg font-medium'>Search Results ({hotels.length})</h2>
+        <div className='flex flex-col overflow-auto h-[33rem] gap-y-6'>
         {
           hotels.map((item) => {
             return(
