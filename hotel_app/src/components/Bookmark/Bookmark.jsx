@@ -1,19 +1,20 @@
-import { Outlet } from 'react-router-dom';
-import { useHotels } from '../context/HotelsProvider';
 import Map from '../Map/Map';
+import { useHotels } from '../context/HotelsProvider';
 
-function AppLayout() {
+
+function Bookmark() {
   const { hotels } = useHotels();
   return(
     <>
       <div className='grid grid-cols-[28rem_1fr] grid-row-1 h-[39rem] gap-[10rem]'>
         <div>
-          <Outlet />
+          BookMark
         </div>
-        <Map markerLocations={hotels} />
+        <Map markerLocations={[]} />
       </div>
     </>
-  )
+  );
 }
 
-export default AppLayout
+
+export default Bookmark;

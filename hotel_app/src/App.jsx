@@ -4,6 +4,7 @@ import LocationList from './components/LocationList/LocationList';
 import AppLayout from './components/AppLayout/AppLayout';
 import Hotels from './components/Hotels/Hotels';
 import SingleHotel from './components/SingleHotel/SingleHotel';
+import Bookmark from './components/Bookmark/Bookmark';
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import HotelsProvider from './components/context/HotelsProvider';
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Hotels />} />
           <Route path=':id' element={<SingleHotel />} />
         </Route>
+        <Route path='/bookmark' element={<Bookmark />} />
       </Routes>
       </HotelsProvider>
     </>
