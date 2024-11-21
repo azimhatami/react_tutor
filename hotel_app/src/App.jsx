@@ -4,29 +4,35 @@ import LocationList from './components/LocationList/LocationList';
 import AppLayout from './components/AppLayout/AppLayout';
 import Hotels from './components/Hotels/Hotels';
 import SingleHotel from './components/SingleHotel/SingleHotel';
-import Bookmark from './components/Bookmark/Bookmark';
+import BookmarkLayout from './components/BookmarkLayout/BookmarkLayout';
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import HotelsProvider from './components/context/HotelsProvider';
+import BookmarkProvider from './components/context/BookmarkListContext';
 
 
 function App() {
 
   return (
     <>
-      <HotelsProvider>
-      <Toaster />
-      <Header />
-      {/* <LocationList /> */}
-      <Routes>
-        <Route path='/' element={<LocationList />} />
-        <Route path='/hotels' element={<AppLayout />}>
-          <Route index element={<Hotels />} />
-          <Route path=':id' element={<SingleHotel />} />
-        </Route>
-        <Route path='/bookmark' element={<Bookmark />} />
-      </Routes>
-      </HotelsProvider>
+      <BookmarkProvider>
+        <HotelsProvider>
+          <Toaster />
+          <Header />
+          {/* <LocationList /> */}
+          <Routes>
+            <Route path='/' element={<LocationList />} />
+            <Route path='/hotels' element={<AppLayout />}>
+              <Route index element={<Hotels />} />
+              <Route path=':id' element={<SingleHotel />} />
+            </Route>
+            <Route path='/bookmark' element={<BookmarkLayout />}>
+              <Route index element={<div>bookmark list</div>} />
+              <Route path='add' element={<div>Add new bookmark</div>} />
+            </Route>
+          </Routes>
+        </HotelsProvider>
+      </BookmarkProvider>
     </>
   )
 }

@@ -87,7 +87,7 @@ export function ChangeCenter({position}) {
 export function DetectClick() {
   const navigate = useNavigate();
   useMapEvent({
-    click: (event) => navigate(`/bookmark?lat=${event.latlng.lat}&lng=${event.latlng.lng}`),
+    click: (event) => navigate(`/bookmark/add?lat=${event.latlng.lat}&lng=${event.latlng.lng}`),
   })
   return null;
 }
