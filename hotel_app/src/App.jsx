@@ -9,6 +9,7 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import HotelsProvider from './components/context/HotelsProvider';
 import BookmarkProvider from './components/context/BookmarkListContext';
+import Bookmark from './components/Bookmark/Bookmark';
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
               <Route path=':id' element={<SingleHotel />} />
             </Route>
             <Route path='/bookmark' element={<BookmarkLayout />}>
-              <Route index element={<div>bookmark list</div>} />
+              <Route index element={<Bookmark />} />
+              <Route path=':id' element={<div>Single bookmark</div>} />
               <Route path='add' element={<div>Add new bookmark</div>} />
             </Route>
           </Routes>
