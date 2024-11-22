@@ -13,7 +13,7 @@ function BookmarkProvider({ children }) {
   const [isLoadingCurrentBookmark, setIsLoadingCurrentBookmark] = useState(false);
   const { isLoading, data: bookmarks } = useFetch(`${baseURL}/bookmarks`);
 
-  async function getBookmark() {
+  async function getBookmark(id) {
     setIsLoadingCurrentBookmark(true)
     try {
       const { data } = await axios.get(`${baseURL}/bookmarks/${id}`);
