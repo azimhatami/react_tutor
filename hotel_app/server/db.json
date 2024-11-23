@@ -1368,6 +1368,15 @@
       "longitude": "67.78003711374224",
       "host_location": "Baba Kot Pakistan",
       "id": 8
+    },
+    {
+      "cityName": "Al Jahra’",
+      "country": "Kuwait",
+      "countryCode": "🇰🇼",
+      "latitude": "29.171348850951507",
+      "longitude": "47.55981445312501",
+      "host_location": "Al Jahra’ Kuwait",
+      "id": 9
     }
   ]
 }

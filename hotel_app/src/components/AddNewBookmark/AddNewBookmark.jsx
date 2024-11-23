@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useUrlLocation from "../../hooks/useUrlLocation";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useBookmark } from '../context/BookmarkListContext';
 
 function getFlagEmoji(countryCode) {
     const codePoints = countryCode
@@ -21,6 +22,8 @@ function AddNewBookmark() {
   const [countryCode, setCountryCode] = useState("");
   const [isLoadingGeoCoding, setIsLoadingGeoCoding] = useState(false);
   const [geoCodingError, setGeoCodingError] = useState(null);
+
+  const {createBookmark} = useBookmark();
 
   useEffect(() => {
     if (!lat || !lng) return;
@@ -48,13 +51,30 @@ function AddNewBookmark() {
     fetchLocationData();
   }, [lat, lng]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!cityName || !country) return;
+    
+    const newBookmark = {
+      cityName,
+      country,
+      countryCode,
+      latitude: lat,
+      longitude: lng,
+      host_location: cityName + ' ' + country
+    };
+
+    await createBookmark(newBookmark)
+    navigate('/bookmark/')
+  };
+
   if (isLoadingGeoCoding) return <p>Loading...</p>;
   if (geoCodingError) return <p>{geoCodingError}</p>
 
   return (
     <>
       <h2 className="font-bold text-xl text-start">Bookmark New Location</h2>
-      <form className="flex flex-col gap-4 mt-6">
+      <form className="flex flex-col gap-4 mt-6" onSubmit={handleSubmit}>
         <div className="flex flex-col items-start gap-2">
           <label htmlFor="cityname" className="text-slate-500">
             City Name:{" "}

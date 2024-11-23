@@ -7,14 +7,14 @@ import ReactCountryFlag from 'react-country-flag';
 
 function SingleBookmark() {
   const { id } = useParams();
-  const { getBookmark, isLoadingCurrentBookmark, currentBookmark } = useBookmark();
+  const { getBookmark, isLoading, currentBookmark } = useBookmark();
   const navigate = useNavigate();
 
   useEffect(() => {
     getBookmark(id)
   }, [id])
 
-  if (isLoadingCurrentBookmark || !currentBookmark) return <p>Loading ...</p>
+  if (isLoading || !currentBookmark) return <p>Loading ...</p>
   return(
     <>
       <div className='flex flex-col items-start gap-4'>
