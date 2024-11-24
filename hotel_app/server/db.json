@@ -1332,6 +1332,24 @@
       "longitude": "54.11865234375001",
       "host_location": "Nir Iran (Islamic Republic of)",
       "id": 1
+    },
+    {
+      "cityName": "Kashan",
+      "country": "Iran (Islamic Republic of)",
+      "countryCode": "🇮🇷",
+      "latitude": "33.97980872872457",
+      "longitude": "51.47369384765626",
+      "host_location": "Kashan Iran (Islamic Republic of)",
+      "id": 2
+    },
+    {
+      "cityName": "Neyshabur",
+      "country": "Iran (Islamic Republic of)",
+      "countryCode": "🇮🇷",
+      "latitude": "36.208000695459084",
+      "longitude": "58.78969252109528",
+      "host_location": "Neyshabur Iran (Islamic Republic of)",
+      "id": 4
     }
   ]
 }

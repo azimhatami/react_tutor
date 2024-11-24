@@ -104,7 +104,7 @@ function AddNewBookmark() {
             id="cityname"
             className="border-solid border-slate-400 border-[2px] rounded-xl px-3 py-1.5 outline-none font-medium w-full"
           />
-          <span className="absolute bottom-[26rem] left-[31rem]">{countryCode}</span>
+          <span className="absolute bottom-[25.8rem] left-[31rem]">{countryCode}</span>
         </div>
         <div className="flex flex-row items-start justify-between mt-4">
           <button

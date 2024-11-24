@@ -37,7 +37,7 @@ function Bookmark() {
                   rounded-2xl 
                   px-3 
                   py-2 
-                  ${item.id === currentBookmark?.id ? 'border-blue-500' : ''}`} 
+                  ${item.id === currentBookmark?.id ? 'border-solid border-[2px] border-blue-400' : ''}`} 
                 >
                   <ReactCountryFlag svg countryCode={item.countryCode} />
                   <strong>{item.cityName}</strong>
