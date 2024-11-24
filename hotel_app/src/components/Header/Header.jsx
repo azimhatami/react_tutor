@@ -5,7 +5,7 @@ import { MdLocationPin } from "react-icons/md";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns';
-import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
+import { useNavigate, createSearchParams, useSearchParams, NavLink } from "react-router-dom";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
@@ -52,8 +52,9 @@ export function Header() {
 
   return (
     <>
-      <div className="border-solid border-[1px] border-slate-400 rounded-md py-4">
+      <div className="border-solid border-[1px] border-slate-400 rounded-md py-4 m-auto mb-[1.2rem]">
         <div className="flex items-center justify-around">
+          <NavLink to='/bookmark'><span>Bookmark</span></NavLink>
           <div className="flex items-center width-12">
             <MdLocationPin className="text-red-400 text-3xl mr-1" />
             <input
@@ -101,6 +102,7 @@ export function Header() {
               <IoSearch className="flex m-auto" />
             </button>
           </div>
+          <NavLink to='/login'><span>Login</span></NavLink>
         </div>
       </div>
     </>
