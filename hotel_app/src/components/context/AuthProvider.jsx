@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer, useContext } from 'react'
 
 const AuthContext = createContext();
 const initialState = {
@@ -30,7 +30,7 @@ const FAKE_USER = {
 
 };
 
-export default function AuthContextProvider({ children }) {
+export default function AuthProvider({ children }) {
   const [{user, isAuthenticated}, dispatch] = useReducer(authReducer, initialState)
 
   function login(email, password) {
@@ -39,7 +39,7 @@ export default function AuthContextProvider({ children }) {
   }
 
   function logout() {
-    dispatch({ type: 'login' })
+    dispatch({ type: 'logout' })
   }
 
 
@@ -53,4 +53,9 @@ export default function AuthContextProvider({ children }) {
       { children }
     </AuthContext.Provider>
   );
+}
+
+
+export function useAuth() {
+  return useContext(AuthContext);
 }

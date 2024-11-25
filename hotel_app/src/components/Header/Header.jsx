@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { HiCalendar, HiMinus, HiPlus } from "react-icons/hi";
+import { HiCalendar, HiLogout, HiMinus, HiPlus } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import { MdLocationPin } from "react-icons/md";
 import useOutsideClick from "../../hooks/useOutsideClick";
@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import { useNavigate, createSearchParams, useSearchParams, NavLink } from "react-router-dom";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useAuth } from "../context/AuthProvider";
 
 export function Header() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -102,7 +103,7 @@ export function Header() {
               <IoSearch className="flex m-auto" />
             </button>
           </div>
-          <NavLink to='/login'><span>Login</span></NavLink>
+          <User />
         </div>
       </div>
     </>
@@ -150,4 +151,26 @@ export function OptionItem({ type, options, minLimit, handleOptions }) {
       </div>
     </>
   );
+}
+
+
+function User() {
+  const navigate = useNavigate();
+  const {user, isAuthenticated, logout} = useAuth();
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  };
+  return(
+    <>
+      {
+        isAuthenticated ? (
+        <div>
+          <span>{user.name}</span>
+          <button onClick={handleLogout}><HiLogout /></button>
+        </div>
+        ) : (<NavLink to='/login'><span>Login</span></NavLink>)
+      }
+    </>
+  ); 
 }
