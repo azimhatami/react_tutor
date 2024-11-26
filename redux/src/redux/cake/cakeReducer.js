@@ -8,7 +8,7 @@ function cakeReducer(state = initialState, action) {
     case 'BY_CAKE':
       return {
         ...state,
-        numOfCakes: state.numOfCakes - 1,
+        numOfCakes: state.numOfCakes - action.payload,
       }
     default:
       return state;
