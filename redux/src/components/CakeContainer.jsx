@@ -7,7 +7,7 @@ function CakeContainer() {
 	const [value, setValue] = useState(0);
 
 	// selector function
-	const state = useSelector((state) => state);
+	const state = useSelector((state) => state.cake);
 
 	// returns a reference to the dispatch function in redux store
 	const dispatch = useDispatch();
