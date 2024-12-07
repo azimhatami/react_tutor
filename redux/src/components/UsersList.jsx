@@ -1,28 +1,28 @@
 import { useEffect } from 'react'
-import { fetchUsers } from '../redux/user/userActions'
+import { getAsyncUsers } from '../features/user/userSlice';
 import { useDispatch, useSelector } from 'react-redux'
 
 
 function UsersList() {
 	const dispatch = useDispatch();
-	const state = useSelector(state => state.users);
+	const { loading, data, error } = useSelector(state => state.users);
 
 	useEffect(() => {
-		dispatch(fetchUsers())
+		dispatch(getAsyncUsers())
 	}, [dispatch])
 
 	return(
 		<>
 			<h2>Users List</h2>
 		{
-			state.loading ? (
+			loading ? (
 				<p>Loading...</p>
-			) : state.error ? (
-				<p>{state.error}</p>
+			) : error ? (
+				<p>{error}</p>
 			) : (
 				<div>
 					{
-						state.data.map(
+						data.map(
 							(user) => <li key={user.id}>{user.name}</li>
 						)
 					}
