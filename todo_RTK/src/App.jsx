@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import AddTodoForm from './components/Todos/AddTodoForm';
-import './App.css'
+import TodoList from './components/Todos/TodoList';
+import './App.css';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
   return (
     <>
       <AddTodoForm />
+      <TodoList />
     </>
   )
 }
