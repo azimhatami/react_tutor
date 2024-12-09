@@ -20,7 +20,7 @@ const TodoItem = ({ id, title, completed }) => {
             <span className={`font-semibold text-gray-700 ${completed ? 'line-through' : ''}`}>{ title }</span>
           </div>
           <button 
-            className='bg-red-700 rounded-lg px-2 py-1 text-slate-50 font-semibold'
+            className='bg-red-600 rounded-lg px-2 py-1 text-slate-50 font-semibold'
             onClick={() => dispatch(deleteAsyncTodo({ id }))}
           >
             Delete
