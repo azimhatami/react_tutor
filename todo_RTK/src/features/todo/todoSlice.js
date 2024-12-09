@@ -1,10 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
+// http://localhost:5000/todos
+
+const api = axios.create({
+  baseURL: 'http://localhost:5000',
+})
+
+export const getAsyncTodos = createAsyncThunk('todos/getAsyncTodos', async (_, { rejectWithValue }) => {
+  try {
+    const response = await api.get('/todos');
+    return response.data;
+  } catch(error) {
+    return rejectWithValue(error.message);
+  }
+})
 
 const todoSlice = createSlice({
   name: 'todos',
   initialState: {
-    todos: []
+    todos: [],
+    loading: false,
+    error: ''
   },
 
   reducers: {
@@ -23,6 +40,24 @@ const todoSlice = createSlice({
     deleteTodo: (state, action) => {
       state.todos = state.todos.filter(todo => todo.id !== Number(action.payload.id))
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAsyncTodos.pending, (state, action) => {
+        state.loading = true;
+        state.todos = [];
+        state.error = '';
+      })
+      .addCase(getAsyncTodos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.todos = action.payload;
+        state.error = '';
+      })
+      .addCase(getAsyncTodos.rejected, (state, action) => {
+        state.loading = false;
+        state.todos = [];
+        state.error = action.payload;
+      })
   }
 })
 
