@@ -1,3 +1,24 @@
 {
-  "todos": []
+  "todos": [
+    {
+      "title": "todo one",
+      "id": 1733751325668,
+      "completed": false
+    },
+    {
+      "title": "todo two",
+      "id": 1733751332596,
+      "completed": false
+    },
+    {
+      "title": "asdf",
+      "id": 1733751739325,
+      "completed": false
+    },
+    {
+      "title": "asdf",
+      "id": 1733751753035,
+      "completed": false
+    }
+  ]
 }
