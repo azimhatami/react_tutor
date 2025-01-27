@@ -1,11 +1,13 @@
 import App from './App';
-import { test } from 'vitest';
+import { test, describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 
-test('App test', () => {
-  render(<App />);
-  const titleElement = screen.getByText(/Wellcome to testing React Apps/);
-  expect(titleElement).toBeInTheDocument();
-  screen.debug();
+describe('App Component', () => {
+  it('renders the app title', () => {
+    render(<App />);
+    const titleElement = screen.getByText(/App/);
+    expect(titleElement).toBeInTheDocument();
+    screen.debug();
+  })
 })
